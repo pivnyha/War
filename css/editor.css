@@ -1,0 +1,265 @@
+.editor-container {
+    max-width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 20px);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.editor-actions .btn {
+    padding: 8px 16px;
+    font-size: 11px;
+}
+
+/* Шаг 1 */
+.setup-form {
+    max-width: 500px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.size-inputs {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    color: var(--text2);
+}
+
+.size-inputs input {
+    width: 100px;
+    padding: 10px;
+    font-family: var(--mono);
+    font-size: 18px;
+    text-align: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+}
+
+.bg-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.bg-option {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bg-option:hover { transform: scale(1.05); }
+.bg-option.active {
+    border-color: var(--green);
+    box-shadow: 0 0 15px rgba(107,140,66,0.5);
+}
+
+/* Шаг 2: Редактор */
+.editor-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 15px;
+    flex: 1;
+    min-height: 0;
+}
+
+.editor-sidebar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.sidebar-section h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tool-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.tool-btn:hover { border-color: var(--border-light); }
+.tool-btn.active {
+    border-color: var(--green);
+    background: rgba(107,140,66,0.1);
+    color: var(--green-bright);
+}
+
+.editor-canvas-wrapper {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mapCanvas {
+    cursor: crosshair;
+    image-rendering: pixelated;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal.hidden { display: none; }
+
+.modal-content {
+    background: var(--bg2);
+    border: 1px solid var(--green);
+    border-radius: 4px;
+    max-width: 800px;
+    width: 95%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+    font-family: var(--mono);
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    color: var(--text2);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.elements-categories {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cat-btn {
+    padding: 8px 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text2);
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cat-btn.active {
+    border-color: var(--green);
+    color: var(--green-bright);
+    background: rgba(107,140,66,0.1);
+}
+
+.elements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.element-item {
+    aspect-ratio: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.2s;
+}
+
+.element-item:hover {
+    border-color: var(--green);
+    transform: scale(1.05);
+}
+
+.element-item.selected {
+    border-color: var(--green);
+    box-shadow: 0 0 15px rgba(107,140,66,0.5);
+}
