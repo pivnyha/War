@@ -90,7 +90,7 @@
 /* Шаг 2: Редактор */
 .editor-layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 240px 1fr;
     gap: 15px;
     flex: 1;
     min-height: 0;
@@ -102,20 +102,51 @@
     border-radius: 3px;
     padding: 15px;
     overflow-y: auto;
-}
-
-.sidebar-section {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .sidebar-section h3 {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text2);
     letter-spacing: 2px;
     margin-bottom: 10px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border);
+}
+
+.mini-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+
+.color-input {
+    width: 100%;
+    height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.size-select {
+    width: 100%;
+    padding: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 12px;
+    cursor: pointer;
 }
 
 .tool-btn {
@@ -141,6 +172,24 @@
     color: var(--green-bright);
 }
 
+.current-prop {
+    padding: 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.current-prop-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+}
+
 .editor-canvas-wrapper {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -150,11 +199,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 #mapCanvas {
     cursor: crosshair;
     image-rendering: pixelated;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 
 /* Модальное окно */
@@ -180,6 +231,10 @@
     max-height: 90vh;
     display: flex;
     flex-direction: column;
+}
+
+.modal-small {
+    max-width: 600px;
 }
 
 .modal-header {
@@ -209,57 +264,62 @@
     overflow-y: auto;
 }
 
-.elements-categories {
+.elements-toolbar {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    align-items: flex-end;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
 }
 
-.cat-btn {
-    padding: 8px 16px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    color: var(--text2);
-    font-family: var(--mono);
-    font-size: 11px;
-    cursor: pointer;
-    transition: all 0.2s;
+.elements-toolbar .mini-label {
+    margin: 0;
 }
 
-.cat-btn.active {
-    border-color: var(--green);
-    color: var(--green-bright);
-    background: rgba(107,140,66,0.1);
+.elements-toolbar .color-input {
+    width: 50px;
+    height: 32px;
+}
+
+.elements-toolbar .size-select {
+    width: auto;
+    padding: 6px 10px;
 }
 
 .elements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 10px;
-    margin-bottom: 20px;
 }
 
 .element-item {
     aspect-ratio: 1;
     background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 3px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
     transition: all 0.2s;
+    padding: 8px;
 }
 
 .element-item:hover {
-    border-color: var(--green);
-    transform: scale(1.05);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
 }
 
 .element-item.selected {
     border-color: var(--green);
     box-shadow: 0 0 15px rgba(107,140,66,0.5);
+    background: rgba(107,140,66,0.1);
+}
+
+.element-item canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
 }
