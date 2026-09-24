@@ -25,24 +25,28 @@
             <div class="screen" id="game-lobby">
                 <h1>ЛОББИ</h1>
                 <div class="players-list" id="playersList"></div>
-                <button class="btn primary" id="readyBtn" onclick="toggleReady()">
-                    ✅ ГОТОВО
-                </button>
+                <button class="btn primary" id="readyBtn" onclick="toggleReady()">✅ ГОТОВО</button>
             </div>
 
             <!-- Бой -->
             <div class="screen hidden" id="game-battle">
                 <div class="battle-layout">
                     <canvas id="battleCanvas"></canvas>
-                    <div class="battle-sidebar">
-                        <div class="turn-info" id="turnInfo">Ход: —</div>
-                        <div class="actions-list">
-                            <button class="action-btn" onclick="doAction('attack')">⚔️ АТАКА</button>
-                            <button class="action-btn" onclick="doAction('cover')">🛡️ УКРЫТИЕ</button>
-                            <button class="action-btn" onclick="doAction('move')">🏃 ПЕРЕБЕЖКА</button>
-                            <button class="action-btn" onclick="doAction('skill')">✨ НАВЫК</button>
+
+                    <!-- ОРУЖИЕ ВНИЗУ (2 СЛОТА) -->
+                    <div class="weapon-bar">
+                        <div class="weapon-slot" id="weaponSlot0" onclick="selectWeapon(0)">
+                            <svg class="weapon-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+                                <!-- ПУСТОЙ СЛОТ -->
+                            </svg>
+                            <span class="weapon-label">СЛОТ 1</span>
                         </div>
-                        <div class="weapons-slots" id="weaponsSlots"></div>
+                        <div class="weapon-slot" id="weaponSlot1" onclick="selectWeapon(1)">
+                            <svg class="weapon-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+                                <!-- ПУСТОЙ СЛОТ -->
+                            </svg>
+                            <span class="weapon-label">СЛОТ 2</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,6 +54,7 @@
     </div>
 
     <script src="js/storage.js"></script>
+    <script src="js/firebase.js"></script>
     <script src="js/game.js"></script>
 </body>
 </html>
