@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бой - PVP PROJECT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <div class="container game-container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">⚔</span>
+                <span class="logo-text">БОЙ</span>
+            </div>
+            <div class="game-info">
+                <span id="gameCode" class="code-badge">----</span>
+                <span id="gameStatus" class="status-badge">ОЖИДАНИЕ</span>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <!-- Лобби -->
+            <div class="screen" id="game-lobby">
+                <h1>ЛОББИ</h1>
+                <div class="players-list" id="playersList"></div>
+                <button class="btn primary" id="readyBtn" onclick="toggleReady()">
+                    ✅ ГОТОВО
+                </button>
+            </div>
+
+            <!-- Бой -->
+            <div class="screen hidden" id="game-battle">
+                <div class="battle-layout">
+                    <canvas id="battleCanvas"></canvas>
+                    <div class="battle-sidebar">
+                        <div class="turn-info" id="turnInfo">Ход: —</div>
+                        <div class="actions-list">
+                            <button class="action-btn" onclick="doAction('attack')">⚔️ АТАКА</button>
+                            <button class="action-btn" onclick="doAction('cover')">🛡️ УКРЫТИЕ</button>
+                            <button class="action-btn" onclick="doAction('move')">🏃 ПЕРЕБЕЖКА</button>
+                            <button class="action-btn" onclick="doAction('skill')">✨ НАВЫК</button>
+                        </div>
+                        <div class="weapons-slots" id="weaponsSlots"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
