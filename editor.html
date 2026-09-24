@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container editor-container">
-        <!-- Верхняя панель -->
         <header class="editor-header">
             <div class="logo">
                 <span class="logo-icon">🗺️</span>
@@ -52,21 +51,31 @@
         <!-- Шаг 2: Редактор -->
         <div class="screen hidden" id="step-editor">
             <div class="editor-layout">
-                <!-- Палитра -->
                 <div class="editor-sidebar">
                     <div class="sidebar-section">
                         <h3>ИНСТРУМЕНТЫ</h3>
                         <button class="tool-btn active" data-tool="place">🧱 Разместить</button>
                         <button class="tool-btn" data-tool="erase">🗑️ Удалить</button>
-                        <button class="tool-btn" data-tool="select">👆 Выбрать</button>
                     </div>
                     <div class="sidebar-section">
-                        <h3>ПРОПЫ</h3>
-                        <div id="propsList"></div>
+                        <h3>НАСТРОЙКИ ПРОПА</h3>
+                        <label class="mini-label">ЦВЕТ</label>
+                        <input type="color" id="propColor" value="#ffffff" class="color-input">
+                        <label class="mini-label">РАЗМЕР</label>
+                        <select id="propSize" class="size-select">
+                            <option value="1">1x1</option>
+                            <option value="2">2x2</option>
+                            <option value="3">3x3</option>
+                        </select>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>ТЕКУЩИЙ ПРОП</h3>
+                        <div class="current-prop" id="currentPropBox">
+                            <span class="current-prop-name" id="currentPropName">Не выбран</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Карта -->
                 <div class="editor-canvas-wrapper">
                     <canvas id="mapCanvas"></canvas>
                 </div>
@@ -76,22 +85,24 @@
 
     <!-- Модальное окно элементов -->
     <div class="modal hidden" id="elementsModal">
-        <div class="modal-content">
+        <div class="modal-content modal-small">
             <div class="modal-header">
                 <h2>ЭЛЕМЕНТЫ</h2>
                 <button onclick="closeElements()">✕</button>
             </div>
             <div class="modal-body">
-                <div class="elements-categories">
-                    <button class="cat-btn active" data-cat="floor">Пол</button>
-                    <button class="cat-btn" data-cat="wall">Стены</button>
-                    <button class="cat-btn" data-cat="bg">Фоновые объекты</button>
-                    <button class="cat-btn" data-cat="cover">Укрытия</button>
-                    <button class="cat-btn" data-cat="npc">НПС</button>
-                    <button class="cat-btn" data-cat="character">Персонажи</button>
+                <div class="elements-toolbar">
+                    <label class="mini-label">ЦВЕТ</label>
+                    <input type="color" id="modalColor" value="#ffffff" class="color-input">
+                    <label class="mini-label">РАЗМЕР</label>
+                    <select id="modalSize" class="size-select">
+                        <option value="1">1x1</option>
+                        <option value="2">2x2</option>
+                        <option value="3">3x3</option>
+                    </select>
+                    <button class="btn" onclick="importPropFile()">📥 ИМПОРТ ИЗ ФАЙЛА</button>
                 </div>
                 <div class="elements-grid" id="elementsGrid"></div>
-                <button class="btn primary" onclick="importProp()">📥 ИМПОРТ</button>
             </div>
         </div>
     </div>
