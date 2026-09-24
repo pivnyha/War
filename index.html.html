@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVP PROJECT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="logo">
+                <span class="logo-icon">⚔</span>
+                <span class="logo-text">PVP PROJECT</span>
+            </div>
+            <div class="user-info" id="userInfo">
+                <div class="avatar" id="userAvatar">?</div>
+                <span class="username" id="userName">Гость</span>
+            </div>
+        </header>
+
+        <!-- Главное меню -->
+        <main class="menu-main">
+            <!-- Экран выбора роли -->
+            <div class="screen" id="screen-role">
+                <h1>ВЫБЕРИТЕ РОЛЬ</h1>
+                <div class="role-buttons">
+                    <button class="role-btn host" onclick="selectRole('host')">
+                        <span class="role-icon">👑</span>
+                        <span class="role-title">СОЗДАТЕЛЬ</span>
+                        <span class="role-desc">Создание боёв, редактор карт</span>
+                    </button>
+                    <button class="role-btn player" onclick="selectRole('player')">
+                        <span class="role-icon">🎮</span>
+                        <span class="role-title">ИГРОК</span>
+                        <span class="role-desc">Подключение к бою</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Экран хоста -->
+            <div class="screen hidden" id="screen-host">
+                <h1>МЕНЮ СОЗДАТЕЛЯ</h1>
+                <div class="host-menu">
+                    <button class="menu-btn" onclick="openMapEditor()">
+                        🗺️ РЕДАКТОР КАРТ
+                    </button>
+                    <button class="menu-btn" onclick="openSaves()">
+                        💾 МОИ СЕЙВЫ
+                    </button>
+                    <button class="menu-btn primary" onclick="createNewGame()">
+                        ⚔️ НОВЫЙ БОЙ
+                    </button>
+                </div>
+                
+                <!-- Список сейвов -->
+                <div class="saves-list hidden" id="savesList">
+                    <h2>СОХРАНЁННЫЕ БОИ</h2>
+                    <div id="savesContainer"></div>
+                </div>
+            </div>
+
+            <!-- Экран игрока -->
+            <div class="screen hidden" id="screen-player">
+                <h1>ПОДКЛЮЧЕНИЕ</h1>
+                <div class="player-menu">
+                    <button class="menu-btn" onclick="loginDiscord()">
+                        🎮 ВОЙТИ ЧЕРЕЗ DISCORD
+                    </button>
+                    <div class="join-code">
+                        <label>КОД БОЯ:</label>
+                        <input type="text" id="joinCode" placeholder="XXXX-XXXX" maxlength="9">
+                        <button class="menu-btn primary" onclick="joinGame()">
+                            🚀 ПОДКЛЮЧИТЬСЯ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
